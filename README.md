@@ -8,6 +8,6 @@ Some Casual Tea is a *real* game with ***real*** features like:
 * Puzzles
 * Mystery?
 * Almost Comedy
-* And Mutch more!
+* And Much more!
 
 TBD
