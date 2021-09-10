@@ -10,4 +10,4 @@ Some Casual Tea is a *real* game with ***real*** features like:
 * Almost Comedy
 * And Much more!
 
-TBD
+Now In Development!
