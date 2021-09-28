@@ -9,5 +9,6 @@ Some Casual Tea is a *real* game with ***real*** features like:
 * Mystery?
 * Almost Comedy
 * And Much more!
+* Definetley not rock paper scissors!
 
 Now In Side Development!
