@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c656ea8-53f7-4808-af51-c6cc7db111c4" name="Changes" comment="an entire rocky rock paper scissors! A little scuffed but shouldn't break! maybe!">
+    <list default="true" id="9c656ea8-53f7-4808-af51-c6cc7db111c4" name="Changes" comment="Made the game class based, packed it up nicer, gave it docstrings!">
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Advance.py" beforeDir="false" afterPath="$PROJECT_DIR$/Advance.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Unit Test" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,8 +37,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.Python tests for test.MyTestCase.test_BotMove_D">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="some-causual-tea" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -53,8 +61,23 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test.MyTestCase.test_BotMove_D" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="some-causual-tea" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test.MyTestCase.test_BotMove_D&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test.MyTestCase.test_BotMove_D" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -75,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632762511638</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Made the game class based, packed it up nicer, gave it docstrings!">
+      <created>1632766028255</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1632766028255</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -92,6 +122,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="an entire rocky rock paper scissors! A little scuffed but shouldn't break! maybe!" />
-    <option name="LAST_COMMIT_MESSAGE" value="an entire rocky rock paper scissors! A little scuffed but shouldn't break! maybe!" />
+    <MESSAGE value="Made the game class based, packed it up nicer, gave it docstrings!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made the game class based, packed it up nicer, gave it docstrings!" />
   </component>
 </project>

@@ -1,4 +1,4 @@
-from Advance import AdTime
+from Advance import AdTime, Clamp
 from random import randint
 
 
@@ -55,10 +55,15 @@ class Game:
             win = player_
             loss = bot_
             who = "YOU"
-        else:
+        elif bot_ == player_:
             return f"{player_} and {bot_}?! Stalemate!"
+        else:
+            return "... what. Somehow, an error occurred?"
 
         return f"{win} beats {loss}! {who} WON!"
+
+    def BotMove(self, min_ = 0, max_ = 1):
+        return list(self.itemList.keys())[Clamp(randint(min_, max_), 0, len(self.itemList)-1)]
 
     def RollGame(self, playerInput_):
         """
@@ -66,7 +71,7 @@ class Game:
 
         playerInput_: string - the input provided by the player
         """
-        botSelect = list(self.itemList.keys())[randint(0, len(self.itemList))]
+        botSelect = self.BotMove(0, len(self.itemList)-1)
         self.sTime.WaitUntil(0.8)
         print("-" * 30)
         self.sTime.WaitUntil(0.8)
