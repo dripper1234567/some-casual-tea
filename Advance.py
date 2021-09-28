@@ -12,6 +12,12 @@ def Clamp(value, min_value=0, max_value=1):
     return min(max_value, max(min_value, value))
 
 
+class Validate:  # TODO CREATE VALIDATION
+
+    def TestInt(self, input_):
+        pass
+
+
 class Vector2:
     """
     Acts as a simple Vector2, for use in interpreting sense hat joystick Values
