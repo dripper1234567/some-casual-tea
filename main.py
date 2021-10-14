@@ -1,38 +1,39 @@
 from Advance import AdTime, Clamp
 from random import randint
+from breezypythongui import EasyFrame
 
 
-class Game:
+class Game(EasyFrame):
     """rock paper scissors."""
-    def __init__(self):
+
+    def __init__(self, windowWidth, windowHeight):
+
+        # __ Initialise game logic __
         self.sTime = AdTime(0)
         self.itemList = {"rock": {"win": "scissors", "los": "paper"},
                          "paper": {"win": "rock", "los": "scissors"},
                          "scissors": {"win": "paper", "los": "rock"}}
+        self.isRunning = True
 
-    def TestInput(self, userInput_):
-        """
-        Takes in input and returns if it is in the accepted inputs list
+        # __ Initialise Display logic __
+        EasyFrame.__init__(self, title="RPS!", width=windowWidth, height=windowHeight)
 
-        userInput_: string - the user input
-        Return: bool - if it is in the accepted inputs
-        """
-        return userInput_ in self.itemList
+        self.messageLbl = self.addLabel(text=f"Please pick a move!", row=0, column=0, sticky="NEWS")
+        self.buttons = [
+            self.addButton(text=list(self.itemList.keys())[count], row=count+1, column=0,
+                           command=self.AddMakeAction(list(self.itemList.keys())[count]), sticky="NEWS")
+            for count in range(len(self.itemList))]
+        self.isRunning = False
 
-    def PromptType(self, inputText_, errorText_):
-        """
-        Produces user input with the provided prompt and validates it, if it fails,
-        it prints the provided error message and restarts the prompt
+        self.mainloop()
 
-        inputText_: string - The message that the user is prompted with
-        errorText_: string - The error message if the input is not valid to the test
-        Return: string - The validated user input
-        """
-        while True:
-            userInput = input(inputText_).lower()
-            if self.TestInput(userInput) or userInput == "exit":
-                return userInput
-            print(errorText_)
+    def AddMakeAction(self, key):
+
+        def MakeAction():
+            if not self.isRunning:
+                self.RollGame(key)
+
+        return MakeAction
 
     def FindWin(self, bot_, player_):
         """
@@ -62,8 +63,8 @@ class Game:
 
         return f"{win} beats {loss}! {who} WON!"
 
-    def BotMove(self, min_ = 0, max_ = 1):
-        return list(self.itemList.keys())[Clamp(randint(min_, max_), 0, len(self.itemList)-1)]
+    def BotMove(self, min_=0, max_=1):
+        return list(self.itemList.keys())[Clamp(randint(min_, max_), 0, len(self.itemList) - 1)]
 
     def RollGame(self, playerInput_):
         """
@@ -71,38 +72,21 @@ class Game:
 
         playerInput_: string - the input provided by the player
         """
-        botSelect = self.BotMove(0, len(self.itemList)-1)
-        self.sTime.WaitUntil(0.8)
-        print("-" * 30)
-        self.sTime.WaitUntil(0.8)
-        print("rock,")
-        self.sTime.WaitUntil(0.7)
-        print("paper,")
-        self.sTime.WaitUntil(0.7)
-        print("SCISSORS!")
-        self.sTime.WaitUntil(0.7)
-        print("...")
-        self.sTime.WaitUntil(4)
-        print(self.FindWin(botSelect, playerInput_))
-        print("-" * 30)
-
-    def Play(self):
-        """
-        The main game loop, run this to play the game!
-        """
-        chosenPiece = -1
-        while True:
-            chosenPiece = self.PromptType(f"Please enter one of these! {str(self.itemList.keys())} (or exit to leave!)"
-                                          f"\n",
-                                          f"Input was not on the list!\n "
-                                          + f"Please choose one of these! {str(self.itemList.keys())}\n")
-            if chosenPiece == "exit":
-                print("Good Game!")
-                exit()
-
-            self.RollGame(chosenPiece)
+        if not self.isRunning:
+            self.isRunning = True
+            botSelect = self.BotMove(0, len(self.itemList) - 1)
+            '''self.sTime.WaitUntil(0.8)
+            self.messageLbl["text"] = "rock"
+            self.sTime.WaitUntil(0.7)
+            self.messageLbl["text"] = "paper"
+            self.sTime.WaitUntil(0.7)
+            self.messageLbl["text"] = "SCISSORS!"
+            self.sTime.WaitUntil(0.7)'''
+            self.messageLbl["text"] = self.FindWin(botSelect, playerInput_) + "\n play again?"
+            '''self.sTime.WaitUntil(5) # For my hubris Breezy has struck down my fancy waiting system, godamnit
+            self.messageLbl["text"] = f"Please pick a move!" ''' # TODO FIX ALL OF THIS
+            self.isRunning = False
 
 
 if __name__ == '__main__':
-    game = Game()
-    game.Play()
+    game = Game(250, 500)

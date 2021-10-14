@@ -95,7 +95,7 @@ class EasyFrame(tkinter.Frame):
     def addButton(self, text, row, column,
                   columnspan = 1, rowspan = 1,
                   command = lambda: None,
-                  state = NORMAL):
+                  state = NORMAL, sticky = "NS"):
         """Creates and inserts a button at the row and column,
         and returns the button."""
         button = tkinter.Button(self, text = text,
@@ -104,7 +104,7 @@ class EasyFrame(tkinter.Frame):
         self.columnconfigure(column, weight = 1)
         button.grid(row = row, column = column,
                     columnspan = columnspan, rowspan = rowspan,
-                    padx = 5, pady = 5)
+                    padx = 5, pady = 5, sticky=sticky)
         return button
 
     def addFloatField(self, value, row, column,
