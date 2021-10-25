@@ -1,6 +1,7 @@
 from Advance import AdTime, Clamp
 from random import randint
 from breezypythongui import EasyFrame
+import time
 
 
 class Game(EasyFrame):
@@ -57,11 +58,11 @@ class Game(EasyFrame):
             loss = bot_
             who = "YOU"
         elif bot_ == player_:
-            return f"{player_} and {bot_}?! Stalemate!"
+            return f"{player_} and {bot_}?! \n Stalemate!"
         else:
             return "... what. Somehow, an error occurred?"
 
-        return f"{win} beats {loss}! {who} WON!"
+        return f"{win} beats {loss}! \n {who} WON!"
 
     def BotMove(self, min_=0, max_=1):
         return list(self.itemList.keys())[Clamp(randint(min_, max_), 0, len(self.itemList) - 1)]
@@ -75,6 +76,8 @@ class Game(EasyFrame):
         if not self.isRunning:
             self.isRunning = True
             botSelect = self.BotMove(0, len(self.itemList) - 1)
+            time.sleep(0.7) #fixing small time bug
+
             '''self.sTime.WaitUntil(0.8)
             self.messageLbl["text"] = "rock"
             self.sTime.WaitUntil(0.7)
@@ -83,8 +86,9 @@ class Game(EasyFrame):
             self.messageLbl["text"] = "SCISSORS!"
             self.sTime.WaitUntil(0.7)'''
             self.messageLbl["text"] = self.FindWin(botSelect, playerInput_) + "\n play again?"
+
             '''self.sTime.WaitUntil(5) # For my hubris Breezy has struck down my fancy waiting system, godamnit
-            self.messageLbl["text"] = f"Please pick a move!" ''' # TODO FIX ALL OF THIS
+            self.messageLbl["text"] = f"Please pick a move!''' # TODO FIX ALL OF THIS
             self.isRunning = False
 
 
