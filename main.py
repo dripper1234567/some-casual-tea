@@ -1,6 +1,7 @@
 from Advance import AdTime, Clamp
 from random import randint
 from breezypythongui import EasyFrame
+from threading import Timer
 import time
 
 
@@ -36,6 +37,14 @@ class Game(EasyFrame):
 
         return MakeAction
 
+
+    def DeclareWinner(self, win, loss, who, isStalemate = False):
+        if isStalemate:
+            return "A stalemate has occurred!"
+        else:
+            return f"{win} beats {loss}! {who} win!"
+
+
     def FindWin(self, bot_, player_):
         """
         Tests the users input and the bots input against each other, determines the winner/ if its a stalemate and
@@ -58,14 +67,16 @@ class Game(EasyFrame):
             loss = bot_
             who = "YOU"
         elif bot_ == player_:
-            return f"{player_} and {bot_}?! \n Stalemate!"
-        else:
-            return "... what. Somehow, an error occurred?"
+            return self.DeclareWinner(win, loss, who, True)
 
-        return f"{win} beats {loss}! \n {who} WON!"
+        return self.DeclareWinner(win, loss, who)
+
 
     def BotMove(self, min_=0, max_=1):
         return list(self.itemList.keys())[Clamp(randint(min_, max_), 0, len(self.itemList) - 1)]
+
+    def SetLabel(self, text):
+        self.messageLbl["text"] = text
 
     def RollGame(self, playerInput_):
         """
@@ -76,19 +87,12 @@ class Game(EasyFrame):
         if not self.isRunning:
             self.isRunning = True
             botSelect = self.BotMove(0, len(self.itemList) - 1)
-            time.sleep(0.7) #fixing small time bug
+            # time.sleep(0.7) fixing small time bug <-- this is no longer needed.
+            self.SetLabel("rock")
+            Timer(0.7, self.SetLabel, ["paper"]).start()
+            Timer(1.4, self.SetLabel, ["scissors"]).start()
+            Timer(2.1, self.SetLabel, [self.FindWin(botSelect, playerInput_) + "\n play again?"]).start()
 
-            '''self.sTime.WaitUntil(0.8)
-            self.messageLbl["text"] = "rock"
-            self.sTime.WaitUntil(0.7)
-            self.messageLbl["text"] = "paper"
-            self.sTime.WaitUntil(0.7)
-            self.messageLbl["text"] = "SCISSORS!"
-            self.sTime.WaitUntil(0.7)'''
-            self.messageLbl["text"] = self.FindWin(botSelect, playerInput_) + "\n play again?"
-
-            '''self.sTime.WaitUntil(5) # For my hubris Breezy has struck down my fancy waiting system, godamnit
-            self.messageLbl["text"] = f"Please pick a move!''' # TODO FIX ALL OF THIS
             self.isRunning = False
 
 
